@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>EcoWise | E‑Waste Collection & Recycling</title>
+  <link rel="icon" href="#" type="image/png" />
+  <meta name="description" content="Professional e‑waste collection and recycling services. Secure data destruction, responsible recycling, and sustainable disposal for businesses and households." />
+
+  <!-- Tailwind + Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'ewaste-primary': '#0F4C3A',
+            'ewaste-secondary': '#E67E22',
+            'ewaste-accent': '#F1C40F',
+            'ewaste-dark': '#1a1a1a',
+            'ewaste-light': '#F4F7F6',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .floating-particle { position: fixed; font-size: 2.4rem; opacity: 0.15; pointer-events: none; z-index: 0; }
+    @keyframes floatY { 0%{ transform: translateY(0px); } 50%{ transform: translateY(-24px); } 100%{ transform: translateY(0px); } }
+    .animate-float { animation: floatY 6s ease-in-out infinite; }
+    .glass-card { background: rgba(255,255,255,0.5); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); }
+    .dark .glass-card { background: rgba(30,30,30,0.6); border-color: rgba(255,255,255,0.05); }
+    .btn-premium { background: linear-gradient(145deg, #0F4C3A, #1A6B4A); box-shadow: 0 12px 30px -8px rgba(15,76,58,0.4); }
+    .btn-premium:hover { transform: scale(1.02); box-shadow: 0 16px 36px -8px rgba(15,76,58,0.6); }
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.4); }
+    .dark .glass { background: rgba(30,30,30,0.5); border-color: rgba(255,255,255,0.08); }
+    .pulse-glow { animation: pulseGlow 2s infinite; }
+    @keyframes pulseGlow { 0%{ opacity:0.6; transform:scale(1); } 50%{ opacity:1; transform:scale(1.15); } 100%{ opacity:0.6; transform:scale(1); } }
+    .animate-fade-up { animation: fadeUp 0.8s ease forwards; }
+    @keyframes fadeUp { 0%{ opacity:0; transform:translateY(20px); } 100%{ opacity:1; transform:translateY(0); } }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:#E67E22; transition:width 0.2s; }
+    .nav-link:hover::after { width:100%; }
+    @media (max-width: 767px) {
+      #mobile-menu { top: 64px; max-height: calc(100vh - 64px); }
+    }
+    @media (min-width: 768px) and (max-width: 1279px) {
+      #mobile-menu { top: 80px; max-height: calc(100vh - 80px); }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-ewaste-dark dark:text-gray-100 font-sans antialiased">
+
+  <!-- floating particles -->
+  <div class="floating-particle left-[5%] top-[15%] animate-float">♻️</div>
+  <div class="floating-particle right-[8%] top-[25%] animate-float" style="animation-delay: 2s;">💻</div>
+  <div class="floating-particle left-[10%] bottom-[20%] animate-float" style="animation-delay: 4s;">🔋</div>
+  <div class="floating-particle right-[12%] bottom-[30%] animate-float" style="animation-delay: 3s;">📱</div>
+
+  <!-- HEADER (fixed) -->
+  <nav class="fixed w-full top-0 z-50 bg-white dark:bg-ewaste-dark border-b border-gray-200 dark:border-gray-800 shadow-md transition-all duration-300">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 md:h-20">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center gap-2 group">
+            <i class="fas fa-recycle text-2xl text-ewaste-secondary group-hover:text-ewaste-primary transition-colors"></i>
+            <span class="text-2xl font-bold tracking-tight text-gray-800 dark:text-white">Eco<span class="text-ewaste-secondary">Wise</span></span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation (FAQ and Dashboard removed) -->
+        <div class="hidden xl:flex items-center justify-center flex-1 mx-6">
+          <div class="flex items-center gap-4 flex-wrap">
+            <!-- Home dropdown -->
+            <div class="relative group">
+              <a href="index.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2 inline-flex items-center gap-1">
+                Home <i class="fas fa-chevron-down text-[10px]"></i>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-36 bg-white dark:bg-ewaste-dark border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                <a href="index.html" class="block px-4 py-3 text-sm hover:bg-ewaste-secondary/10 transition-colors">Home 1</a>
+                <a href="home2.html" class="block px-4 py-3 text-sm hover:bg-ewaste-secondary/10 transition-colors border-t border-gray-100 dark:border-gray-800">Home 2</a>
+              </div>
+            </div>
+            <a href="about.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">About</a>
+            <a href="services.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">Services</a>
+            <a href="collection.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">Collection</a>
+            <a href="recycling.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">Recycling</a>
+            <a href="gallery.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">Gallery</a>
+            <a href="pickup.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">Pickup</a>
+            <a href="contact.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary font-medium text-sm py-2">Contact</a>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hidden xl:flex items-center gap-3">
+          <button id="themeToggle" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-ewaste-secondary/10 transition"><i class="fas fa-moon text-ewaste-secondary text-sm"></i></button>
+          <button id="rtlToggle" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-ewaste-secondary/10 transition"><i class="fas fa-exchange-alt text-ewaste-secondary text-sm"></i></button>
+          <a href="login.html" class="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-ewaste-secondary transition font-medium text-sm"><i class="fas fa-user-circle text-lg"></i> Login</a>
+          <a href="signup.html" class="flex items-center gap-2 bg-ewaste-secondary hover:bg-ewaste-primary text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition shadow-md"><i class="fas fa-user-plus text-sm"></i> Sign Up</a>
+        </div>
+
+        <!-- Mobile menu button (NO "x" icon, only hamburger) -->
+        <div class="xl:hidden flex items-center gap-3">
+          <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-200 p-2 focus:outline-none">
+            <i id="menu-icon" class="fas fa-bars text-xl"></i>
+            <!-- close icon removed per request -->
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu (FAQ & Dashboard removed) -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-ewaste-dark border-t border-gray-200 dark:border-gray-800 absolute w-full shadow-xl z-50 overflow-y-auto">
+      <div class="px-5 py-5 pb-8 space-y-2">
+        <div class="w-full">
+          <button id="mobile-home-dropdown-btn" class="w-full flex justify-between items-center px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">
+            <span>Home</span> <i id="mobile-home-icon" class="fas fa-chevron-down text-[10px] transition-transform duration-300"></i>
+          </button>
+          <div id="mobile-home-submenu" class="hidden pl-6 space-y-1 mt-1">
+            <a href="index.html" class="block px-4 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-ewaste-secondary/10 rounded-lg text-sm">Home 1</a>
+            <a href="home2.html" class="block px-4 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-ewaste-secondary/10 rounded-lg text-sm">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">About</a>
+        <a href="services.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">Services</a>
+        <a href="collection.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">Collection</a>
+        <a href="recycling.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">Recycling</a>
+        <a href="gallery.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">Gallery</a>
+        <a href="pickup.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">Pickup</a>
+        <a href="contact.html" class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-ewaste-secondary/10 rounded-xl text-sm font-medium transition">Contact</a>
+        <div class="pt-5 mt-5 border-t border-gray-200 dark:border-gray-800">
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <button id="mobileThemeToggle" class="bg-ewaste-secondary/10 px-4 py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2"><i class="fas fa-moon"></i> Dark/Light</button>
+            <button id="mobileRtlToggle" class="bg-ewaste-secondary/10 px-4 py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2"><i class="fas fa-exchange-alt"></i> RTL</button>
+          </div>
+          <a href="login.html" class="flex items-center justify-center gap-2 bg-ewaste-primary text-white text-center px-4 py-3.5 rounded-xl text-sm font-semibold uppercase"><i class="fas fa-user-circle"></i> Login</a>
+          <a href="signup.html" class="flex items-center justify-center gap-2 mt-3 bg-ewaste-secondary text-white text-center px-4 py-3.5 rounded-xl text-sm font-semibold uppercase"><i class="fas fa-user-plus"></i> Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: HERO -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-to-br from-emerald-50/60 to-orange-50/40 dark:from-ewaste-dark dark:to-gray-900">
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-ewaste-secondary/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[500px] h-[500px] bg-ewaste-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <div class="animate-fade-up opacity-0" style="animation-delay:0.1s;">
+        <div class="inline-flex items-center gap-3 mb-6 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-gray-700">
+          <span class="w-2 h-2 rounded-full bg-ewaste-secondary pulse-glow"></span>
+          <span class="text-gray-800 dark:text-gray-200 text-xs uppercase tracking-[0.2em] font-bold">Responsible E‑Waste Recycling</span>
+        </div>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-heading font-bold text-gray-900 dark:text-white leading-[1.1] mb-6">
+          Give <span class="text-transparent bg-clip-text bg-gradient-to-r from-ewaste-secondary to-orange-500">E‑Waste</span> a Second Life
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+          Secure collection and certified recycling for electronics, batteries, and IT equipment. Protect your data and the planet.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+          <a href="#" class="btn-premium text-white px-8 py-4 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
+            Schedule Pickup <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="tel:18885550123" class="glass text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-4 rounded-full text-sm font-bold transition text-center flex items-center justify-center gap-2">
+            <i class="fas fa-phone text-ewaste-secondary"></i> (888) 555‑0123
+          </a>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-8 pt-8 border-t border-gray-200 dark:border-gray-800 max-w-3xl mx-auto">
+          <div class="flex items-center gap-2"><i class="fas fa-shield-alt text-2xl text-emerald-600 dark:text-emerald-500"></i><div class="text-xs font-semibold text-gray-700 dark:text-gray-300 text-left">Data<br>Destruction</div></div>
+          <div class="flex items-center gap-2"><i class="fas fa-star text-2xl text-yellow-400"></i><div class="text-xs font-semibold text-gray-700 dark:text-gray-300 text-left">5-Star<br>Rated</div></div>
+          <div class="flex items-center gap-2"><i class="fas fa-leaf text-2xl text-ewaste-primary"></i><div class="text-xs font-semibold text-gray-700 dark:text-gray-300 text-left">Zero‑Landfill<br>Goal</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Services Grid -->
+  <section class="py-20 lg:py-28 bg-gray-50/50 dark:bg-gray-900/50 relative">
+    <div class="max-w-7xl mx-auto px-5 relative z-10">
+      <div class="text-center mb-14"><span class="text-ewaste-secondary text-[10px] tracking-[0.4em] font-bold block mb-3 uppercase">What We Do</span>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 dark:text-white">E‑Waste Services</h2>
+        <div class="w-20 h-[2px] bg-gradient-to-r from-ewaste-primary to-ewaste-secondary mx-auto mt-5 rounded-full"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 items-stretch">
+        <div class="glass-card p-6 sm:p-8 rounded-3xl text-center flex flex-col h-full group">
+          <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
+            <i class="fas fa-laptop text-2xl text-ewaste-primary"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-gray-800 dark:text-gray-100">IT &amp; Electronics</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm flex-grow leading-relaxed">Computers, servers, monitors, printers — secure data wiping &amp; recycling.</p>
+        </div>
+        <div class="glass-card p-6 sm:p-8 rounded-3xl text-center flex flex-col h-full group">
+          <div class="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-50 dark:from-orange-900/40 dark:to-orange-800/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
+            <i class="fas fa-bolt text-2xl text-ewaste-secondary"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-gray-800 dark:text-gray-100">Batteries &amp; Cells</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm flex-grow leading-relaxed">Lithium, alkaline, lead-acid — safe collection and certified disposal.</p>
+        </div>
+        <div class="glass-card p-6 sm:p-8 rounded-3xl text-center flex flex-col h-full group">
+          <div class="w-16 h-16 bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-700/40 dark:to-gray-800/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
+            <i class="fas fa-mobile-alt text-2xl text-gray-700 dark:text-gray-300"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-gray-800 dark:text-gray-100">Mobile &amp; Wearables</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm flex-grow leading-relaxed">Smartphones, tablets, smartwatches — component recovery &amp; reuse.</p>
+        </div>
+        <div class="glass-card p-6 sm:p-8 rounded-3xl text-center flex flex-col h-full group">
+          <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
+            <i class="fas fa-industry text-2xl text-ewaste-primary"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-gray-800 dark:text-gray-100">Industrial E‑Waste</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm flex-grow leading-relaxed">Medical devices, telecom, lab equipment — tailored logistics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Why Choose Us -->
+  <section class="py-12 lg:py-16 bg-white dark:bg-ewaste-dark relative overflow-hidden">
+    <div class="absolute -right-40 top-20 w-96 h-96 bg-ewaste-secondary/5 rounded-full blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-5 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <img src="https://miro.medium.com/v2/resize:fit:900/1*wTuToZLAlli_3koOuU8CJg.jpeg" alt="E‑waste recycling facility" class="relative rounded-3xl shadow-2xl w-full border border-gray-100 dark:border-gray-800 object-cover h-64 sm:h-96 lg:h-[500px]">
+        </div>
+        <div class="pl-0 lg:pl-10">
+          <span class="text-ewaste-secondary text-[10px] tracking-[0.4em] font-bold block mb-3 uppercase">Why EcoWise?</span>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 dark:text-white mb-8 leading-tight">Secure, Sustainable, Certified</h2>
+          <div class="space-y-6">
+            <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+              <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0"><i class="fas fa-database text-ewaste-secondary text-xl"></i></div>
+              <div><h3 class="font-heading font-bold text-lg text-gray-800 dark:text-gray-100 mb-1">Data Destruction</h3><p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Physical shredding and certified data wiping for all devices.</p></div>
+            </div>
+            <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+              <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0"><i class="fas fa-recycle text-ewaste-secondary text-xl"></i></div>
+              <div><h3 class="font-heading font-bold text-lg text-gray-800 dark:text-gray-100 mb-1">Material Recovery</h3><p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Precious metals, plastics, and glass recovered for circular economy.</p></div>
+            </div>
+            <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+              <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0"><i class="fas fa-truck text-ewaste-primary text-xl"></i></div>
+              <div><h3 class="font-heading font-bold text-lg text-gray-800 dark:text-gray-100 mb-1">Convenient Pickup</h3><p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Scheduled collection from home or office — we handle everything.</p></div>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 mt-8 btn-premium text-white px-8 py-3.5 rounded-full text-sm font-bold transition">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Pricing Plans -->
+  <section class="py-20 lg:py-28 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-12"><span class="text-ewaste-secondary text-[10px] tracking-[0.4em] font-bold block mb-3">Simple Pricing</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">Transparent E‑Waste Rates</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl text-center flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+          <div class="text-2xl font-bold text-ewaste-secondary">Small Box</div>
+          <div class="text-3xl font-bold mt-2">$49<span class="text-sm font-normal">/box</span></div>
+          <ul class="space-y-2 mt-4 text-sm flex-grow"><li>Up to 5 devices</li><li>Data wipe included</li><li>Pickup within 48h</li></ul>
+          <div class="mt-auto pt-4"><a href="#" class="inline-block border border-ewaste-secondary text-ewaste-secondary hover:bg-ewaste-secondary hover:text-white px-5 py-2 rounded-full text-xs font-bold transition">Book Now</a></div>
+        </div>
+        <div class="bg-ewaste-secondary/10 dark:bg-ewaste-secondary/5 p-6 rounded-2xl text-center border-2 border-ewaste-secondary transform lg:-translate-y-3 relative flex flex-col h-full hover:lg:-translate-y-5 hover:-translate-y-2 transition-transform duration-300">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-ewaste-secondary text-white text-[9px] px-3 py-1 rounded-full">Popular</div>
+          <div class="text-2xl font-bold text-ewaste-secondary">Pallet</div>
+          <div class="text-3xl font-bold mt-2">$179<span class="text-sm font-normal">/pallet</span></div>
+          <ul class="space-y-2 mt-4 text-sm flex-grow"><li>Up to 50 devices</li><li>Data destruction certificate</li><li>Same‑day pickup</li></ul>
+          <div class="mt-auto pt-4"><a href="#" class="inline-block bg-ewaste-secondary hover:bg-ewaste-primary text-white px-5 py-2 rounded-full text-xs font-bold transition">Book Now</a></div>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl text-center flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+          <div class="text-2xl font-bold text-ewaste-secondary">Full Truck</div>
+          <div class="text-3xl font-bold mt-2">$399<span class="text-sm font-normal">/load</span></div>
+          <ul class="space-y-2 mt-4 text-sm flex-grow"><li>Large‑volume IT</li><li>On‑site data shredding</li><li>Recycling report</li></ul>
+          <div class="mt-auto pt-4"><a href="#" class="inline-block border border-ewaste-secondary text-ewaste-secondary hover:bg-ewaste-secondary hover:text-white px-5 py-2 rounded-full text-xs font-bold transition">Book Now</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Residential & Commercial Highlights -->
+  <section class="py-20 lg:py-28 bg-ewaste-secondary/5 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"><i class="fas fa-house-chimney text-4xl text-ewaste-secondary mb-3"></i>
+          <h3 class="text-2xl font-bold mb-3">Residential E‑Waste</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-4 flex-grow">Old laptops, phones, TVs, and batteries — we collect from your doorstep and recycle responsibly.</p>
+          <div class="mt-auto"><a href="#" class="text-ewaste-secondary font-semibold inline-block">Learn More →</a></div>
+        </div>
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"><i class="fas fa-building text-4xl text-ewaste-secondary mb-3"></i>
+          <h3 class="text-2xl font-bold mb-3">Commercial IT Recycling</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-4 flex-grow">Data center decommissioning, office refresh, and secure asset recovery for enterprises.</p>
+          <div class="mt-auto"><a href="#" class="text-ewaste-secondary font-semibold inline-block">Learn More →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CTA + Free Quote -->
+  <section class="py-20 lg:py-28 bg-ewaste-primary text-white">
+    <div class="max-w-5xl mx-auto px-5 text-center"><i class="fas fa-calendar-check text-4xl mb-4"></i>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Ready to Recycle Responsibly?</h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-8">Get a free quote for your e‑waste collection. We reply within 30 minutes.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center"><input type="tel" placeholder="Enter your phone number" class="px-5 py-3 rounded-full text-gray-900 w-full sm:w-64 focus:outline-none"><button onclick="alert('Thanks! We\'ll call you within 30 minutes with your free quote.')" class="bg-ewaste-secondary hover:bg-white hover:text-ewaste-secondary text-white px-8 py-3 rounded-full text-sm font-bold transition">Get Free Quote →</button></div>
+      <p class="text-white/60 text-xs mt-4">No obligation • Secure data destruction • Certified recycling</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white border-t border-gray-200 dark:border-gray-800 pt-20 pb-8">
+    <div class="max-w-[1400px] mx-auto px-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+        <div class="lg:col-span-5">
+          <a href="index.html" class="flex items-center gap-2 group mb-5">
+            <i class="fas fa-recycle text-2xl text-ewaste-secondary group-hover:text-ewaste-primary transition-colors"></i>
+            <span class="text-2xl font-bold tracking-tight text-gray-800 dark:text-white">Eco<span class="text-ewaste-secondary">Wise</span></span>
+          </a>
+          <p class="text-gray-600 dark:text-gray-400 text-sm max-w-md">Secure e‑waste collection and certified recycling for a sustainable future. Trusted by businesses and households.</p>
+          <div class="flex gap-4 mt-6"><a href="#" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:border-ewaste-secondary"><i class="fab fa-facebook-f text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:border-ewaste-secondary"><i class="fab fa-instagram text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:border-ewaste-secondary"><i class="fab fa-linkedin-in text-sm"></i></a></div>
+        </div>
+        <div class="lg:col-span-3">
+          <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-ewaste-secondary">Services</h4>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li><a href="#" class="hover:text-ewaste-secondary transition"><i class="fas fa-chevron-right mr-2 text-[10px]"></i>IT Equipment</a></li>
+            <li><a href="#" class="hover:text-ewaste-secondary transition"><i class="fas fa-chevron-right mr-2 text-[10px]"></i>Batteries</a></li>
+            <li><a href="#" class="hover:text-ewaste-secondary transition"><i class="fas fa-chevron-right mr-2 text-[10px]"></i>Mobile Devices</a></li>
+            <li><a href="#" class="hover:text-ewaste-secondary transition"><i class="fas fa-chevron-right mr-2 text-[10px]"></i>Data Destruction</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-4">
+          <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-ewaste-secondary">Contact</h4>
+          <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+            <li><a href="tel:+18885550123" class="hover:text-ewaste-secondary transition"><i class="fas fa-phone mr-2"></i>(888) 555-0123</a></li>
+            <li><a href="mailto:hello@ecowise.com" class="hover:text-ewaste-secondary transition"><i class="fas fa-envelope mr-2"></i>hello@ecowise.com</a></li>
+            <li><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 6pm</li>
+            <li>Emergency collection available</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-[10px] uppercase tracking-widest">© 2026 EcoWise — E‑Waste Recycling. All rights reserved.</p>
+        <div class="flex gap-6 text-[10px] text-gray-500 uppercase"><a href="#" class="hover:text-ewaste-secondary transition">Privacy</a><a href="#" class="hover:text-ewaste-secondary transition">Terms</a><a href="#" class="hover:text-ewaste-secondary transition">Accessibility</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts (simplified: no "x" icon, no dashboard/FAQ) -->
+  <script>
+    (function () {
+      const themeToggle = document.getElementById('themeToggle');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      const html = document.documentElement;
+      function toggleTheme() { html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); updateThemeIcon(); }
+      function updateThemeIcon() { const isDark = html.classList.contains('dark'); document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(icon => { if (isDark) icon.className = 'fas fa-sun text-ewaste-secondary text-sm'; else icon.className = 'fas fa-moon text-ewaste-secondary text-sm'; }); }
+      if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+      if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+      updateThemeIcon();
+
+      const rtlBtn = document.getElementById('rtlToggle');
+      const mobileRtl = document.getElementById('mobileRtlToggle');
+      function toggleRTL() { if (html.getAttribute('dir') === 'rtl') html.removeAttribute('dir'); else html.setAttribute('dir', 'rtl'); localStorage.setItem('direction', html.getAttribute('dir') || 'ltr'); }
+      if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+      if (mobileRtl) mobileRtl.addEventListener('click', toggleRTL);
+      if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+
+      const menuBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const body = document.body;
+
+      function closeMobileMenu() { if (mobileMenu && !mobileMenu.classList.contains('hidden')) { mobileMenu.classList.add('hidden'); body.classList.remove('menu-open'); body.style.overflow = ''; } }
+      function openMobileMenu() { if (mobileMenu && mobileMenu.classList.contains('hidden')) { mobileMenu.classList.remove('hidden'); body.classList.add('menu-open'); body.style.overflow = 'hidden'; } }
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.contains('hidden') ? openMobileMenu() : closeMobileMenu(); });
+        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => { if (link.id !== 'mobile-home-dropdown-btn') link.addEventListener('click', closeMobileMenu); });
+        window.addEventListener('resize', () => { if (window.innerWidth >= 1280 && !mobileMenu.classList.contains('hidden')) closeMobileMenu(); });
+      }
+
+      const homeBtn = document.getElementById('mobile-home-dropdown-btn');
+      const homeSub = document.getElementById('mobile-home-submenu');
+      const homeIcon = document.getElementById('mobile-home-icon');
+      if (homeBtn && homeSub) { homeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); homeSub.classList.toggle('hidden'); if (homeIcon) homeIcon.classList.toggle('rotate'); }); }
+    })();
+  </script>
+</body>
+</html>
